@@ -1,0 +1,20 @@
+version: '3'
+services:
+  homepage-client:
+    build: ./client
+    container_name: homepage-client
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/home/client
+    depends_on:
+      - homepage-api
+  homepage-api:
+    build: ./api
+    container_name: homepage-api
+    tty: true
+    ports:
+      - 8080:8080
+    volumes:
+      - ./api:/home/api
